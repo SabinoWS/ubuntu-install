@@ -10,7 +10,7 @@ readme:
 
 all: install configuration
 install: install-apt install-snap install-wget install-docker
-configuration: config-alias config-utilities config-ssh config-vpn config-folders
+configuration: config-alias config-utilities config-ssh config-folders
 
 # Manual ---------------------------------------------------------------
 manual-zbash: # With oh my zsh framework
@@ -18,6 +18,13 @@ manual-zbash: # With oh my zsh framework
 	@sudo chsh -s /usr/bin/zsh
 	@sh -c "$$(wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 	@echo "Log out and log in to finish!"
+
+manual-vpn:
+	@unrar x *.rar ~/Documents/vpn-files/
+	@sudo nmcli connection import type openvpn file ~/Documents/vpn-files/*.ovpn
+	@echo "Now you can enable the VPN in configurations!"
+
+
 
 anbox:
 # Kernel dependencies
@@ -96,8 +103,3 @@ config-ssh:
 	@ssh-keygen -q -t rsa -b 4096 -N '' -f ~/.ssh/id_rsa
 	@printf "To show your key, run: cat ~/.ssh/id_rsa.pub\n"
 #	@cat ~/.ssh/id_rsa.pub
-
-config-vpn:
-	@unrar x *.rar ~/Documents/vpn-files/
-	@sudo nmcli connection import type openvpn file ~/Documents/vpn-files/*.ovpn
-	@echo "Now you can enable the VPN in configurations!"
