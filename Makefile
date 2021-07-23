@@ -1,6 +1,5 @@
 # TODO
 ## XFREERDP
-## MONGO COMPASS
 
 # - Ubuntu with snapd
 .ONESHELL:
@@ -71,6 +70,9 @@ install-wget:
 	@wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 	@sudo apt install ./google-chrome-stable_current_amd64.deb
 	@rm ./google-chrome-stable_current_amd64.*
+# Mongo Compass
+	@wget https://downloads.mongodb.com/compass/mongodb-compass_1.26.1_amd64.deb
+	@sudo dpkg -i mongodb-compass_1.26.1_amd64.deb
 
 install-dev:
 # NVM - Node Version Manager
